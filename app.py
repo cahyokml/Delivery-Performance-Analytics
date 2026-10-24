@@ -10,7 +10,6 @@ import streamlit as st
 # --------------------------------------------------
 st.set_page_config(
     page_title="Delivery Performance Analytics",
-    page_icon="📦",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -188,12 +187,12 @@ def load_data():
     return df
 
 
-st.title("📦 Delivery Performance Analytics")
+st.title("Delivery Performance Analytics")
 
 st.markdown(
     """
-    Monitor delivery reliability, shipping duration, and regional trends
-    using historical Brazilian e-commerce order data.
+    Dashboard interaktif untuk memantau keandalan pengiriman logistik, durasi pengiriman, 
+    serta tren performa wilayah berdasarkan data historis e-commerce Brasil..
     """
 )
 
@@ -1038,60 +1037,6 @@ with st.expander("Monthly Aggregation Consistency Audit"):
         hide_index=True,
     )
 
-
-# --------------------------------------------------
-# Regional Aggregation Consistency Audit
-# --------------------------------------------------
-with st.expander("Regional Aggregation Consistency Audit"):
-    audit_data = filtered.copy()
-
-    regional_audit = (
-        audit_data.groupby("customer_state")
-        .agg(
-            total_orders=("order_id", "nunique"),
-            late_orders=("is_late", "sum"),
-        )
-        .reset_index()
-    )
-
-    regional_audit["on_time_orders"] = (
-        regional_audit["total_orders"] - regional_audit["late_orders"]
-    )
-
-    regional_total = int(regional_audit["total_orders"].sum())
-    regional_late_total = int(regional_audit["late_orders"].sum())
-
-    source_total = int(audit_data["order_id"].nunique())
-    source_late_total = int(
-        audit_data.loc[audit_data["is_late"], "order_id"].nunique()
-    )
-
-    col1, col2, col3 = st.columns(3)
-    col1.metric("Orders in Regional Groups", f"{regional_total:,}")
-    col2.metric("Filtered Orders", f"{source_total:,}")
-    col3.metric("Late Orders in Regional Groups", f"{regional_late_total:,}")
-
-    if (
-        regional_total == source_total
-        and regional_late_total == source_late_total
-    ):
-        st.success(
-            "Audit passed: regional groups preserve all filtered orders "
-            "and late orders."
-        )
-    else:
-        st.warning(
-            "Audit requires review: regional totals do not match "
-            "the filtered dataset."
-        )
-
-    st.dataframe(
-        regional_audit.sort_values(
-            "total_orders", ascending=False
-        ),
-        use_container_width=True,
-        hide_index=True,
-    )
 
 
 
