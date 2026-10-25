@@ -1,6 +1,8 @@
 pandas
+numpy
 matplotlib
-jupyter
-ipykernel
+seaborn
 streamlit
 plotly
+sqlalchemy
+jupyter
