@@ -33,9 +33,9 @@ orders = orders.dropna(subset=['order_delivered_customer_date'])
 
 # 3. Hitung Metrik Pengiriman
 # delivery_days: total hari dari beli sampai terima
-orders['delivery_days'] = (orders['order_delivered_customer_date'] - orders['order_purchase_timestamp']).dt.days
-# delay_days: selisih hari antara aktual terima vs estimasi
-orders['delay_days'] = (orders['order_delivered_customer_date'] - orders['order_estimated_delivery_date']).dt.days
+orders['delivery_days'] = (orders['order_delivered_customer_date'] - orders['order_purchase_timestamp']).dt.total_seconds() / 86400
+orders['delay_days'] = (orders['order_delivered_customer_date'] - orders['order_estimated_delivery_date']).dt.total_seconds() / 86400
+orders['is_late'] = (orders['order_delivered_customer_date'] > orders['order_estimated_delivery_date'])
 
 # Tentukan On-Time atau Late
 orders['is_late'] = orders['delay_days'] > 0

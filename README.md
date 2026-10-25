@@ -11,9 +11,9 @@ Proyek ini adalah **end-to-end data analytics pipeline** terhadap **96.470 pesan
 **🔗 [KLIK DI SINI UNTUK MELIHAT LIVE DASHBOARD](https://cahyokml-delivery-analytics.streamlit.app/)**
 
 ### 💡 Key Insights (Golden Findings)
-1. **Keterlambatan Menghancurkan Reputasi:** Pesanan yang terlambat memiliki rata-rata skor ulasan **2.27**, turun drastis dibandingkan pesanan tepat waktu yang mendapat **4.29**. Hal ini membuktikan keterlambatan berdampak langsung pada *churn* dan reputasi.
-2. **Kesenjangan Geografis:** Meskipun OTD rate keseluruhan sangat baik (**93.23%**), keterlambatan sangat terkonsentrasi di wilayah tertentu seperti **AL (21.41%)** dan **MA (17.43%)**.
-3. **Efisiensi Pengiriman:** Secara umum, logistik Olist tiba rata-rata **11.88 hari lebih awal** dari estimasi. Namun, 6.534 pesanan yang terlambat tetap menjadi prioritas utama untuk diperbaiki.
+1. **Keterlambatan Menghancurkan Reputasi:** Pesanan yang terlambat memiliki rata-rata skor ulasan **2.57**, turun drastis dibandingkan pesanan tepat waktu yang mendapat **4.29**. Hal ini membuktikan keterlambatan berdampak langsung pada *churn* dan reputasi.
+2. **Kesenjangan Geografis:** Meskipun OTD rate keseluruhan sangat baik (**91.89%**), keterlambatan sangat terkonsentrasi di wilayah tertentu seperti **AL (23.93%)** dan **MA (19.67%)**.
+3. **Efisiensi Pengiriman:** Secara umum, logistik Olist tiba rata-rata **11.88 hari lebih awal** dari estimasi. Namun, 7.826 pesanan yang terlambat tetap menjadi prioritas utama untuk diperbaiki.
 
 ---
 

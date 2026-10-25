@@ -1,5 +1,5 @@
 payment_type,total_orders,avg_delay_days,avg_review_score
-credit_card,73213,-12.08,4.16
-boleto,19191,-11.15,4.16
-voucher,2582,-11.83,4.13
-debit_card,1483,-11.56,4.24
+credit_card,73213,-11.38,4.16
+boleto,19191,-10.45,4.16
+voucher,2582,-11.13,4.13
+debit_card,1483,-10.87,4.24
