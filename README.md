@@ -1,50 +1,97 @@
 # E-Commerce Delivery Performance Analytics
 
-![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)
-![SQL](https://img.shields.io/badge/SQL-SQLite-green.svg)
-![Streamlit](https://img.shields.io/badge/Streamlit-1.0+-red.svg)
-![Pandas](https://img.shields.io/badge/Pandas-Data%20Wrangling-purple.svg)
+Analisis performa pengiriman e-commerce menggunakan dataset publik Olist dari Brasil untuk mengevaluasi ketepatan waktu pengiriman, mengidentifikasi pola keterlambatan, dan menyajikan hasil analisis melalui dashboard interaktif.
 
-## Executive Summary
-
-Proyek _end-to-end data analytics_ untuk mengevaluasi performa pengiriman pada dataset publik Olist (E-Commerce Brasil) yang berisi **96.470 pesanan**. Analisis mencakup ketepatan waktu pengiriman (OTD), durasi, tren bulanan, perbedaan wilayah, dan hubungan antara keterlambatan pengiriman dengan skor ulasan pelanggan.
-
-**🔗 [KLIK DI SINI UNTUK MELIHAT LIVE DASHBOARD](https://cahyokml-delivery-analytics.streamlit.app/)**
-
-### Key Insights (Golden Findings)
-
-1. **Keterlambatan Menghancurkan Reputasi:** Pesanan yang terlambat memiliki rata-rata skor ulasan **2.57**, turun drastis dibandingkan pesanan tepat waktu yang mendapat **4.29**. Hal ini membuktikan keterlambatan berdampak langsung pada _churn_ dan reputasi.
-2. **Kesenjangan Geografis:** Meskipun OTD rate keseluruhan sangat baik (**91.89%**), keterlambatan sangat terkonsentrasi di wilayah tertentu seperti **AL (23.93%)** dan **MA (19.67%)**.
-3. **Efisiensi Pengiriman:** Secara umum, logistik Olist tiba rata-rata **11.18 hari lebih awal** dari estimasi. Namun, **7.826 pesanan** yang terlambat tetap menjadi prioritas utama untuk diperbaiki.
+**Live Dashboard:** [Delivery Performance Analytics](https://delivery-performance-analytics-chahyo.streamlit.app/)
 
 ---
 
-## Tech Stack & Data Pipeline
+## Project Overview
 
-- **Data Engineering (Python/Pandas):** Membersihkan 9 tabel mentah menjadi 1 tabel fakta (`fact_orders.csv`) dengan validasi relasi _one-to-one_ dan penanganan data duplikat.
-- **Analytical SQL (SQLite):** Menulis 12+ _complex queries_ menggunakan CTE dan Window Functions untuk mengekstraksi _insight_ bisnis.
-- **Interactive Dashboard (Streamlit & Plotly):** Membangun UI/UX interaktif dengan tema _Dark Mode & Glassmorphism_, lengkap dengan _Dynamic Insights_.
+Proyek ini berfokus pada analisis performa pengiriman pesanan e-commerce menggunakan Olist Brazilian E-Commerce Public Dataset.
 
----
+Analisis dilakukan untuk memahami ketepatan waktu pengiriman, melihat pola keterlambatan berdasarkan periode dan wilayah pelanggan, serta menyajikan hasilnya melalui dashboard interaktif yang dikembangkan menggunakan Streamlit.
 
-##  Project Structure
+## Objectives
 
-```text
-Delivery-Performance-Analytics/
-├── data/
-│   ├── raw/                  # Dataset asli Olist (Kaggle)
-│   ├── processed/            # Dataset bersih (fact_orders.csv) & Database (olist.db)
-├── src/
-│   ├── 01_data_audit.py      # Script audit kualitas data (missing values, duplikat)
-│   └── 02_clean_merge.py     # Script agregasi 9 tabel & perhitungan metrik (OTD, Late)
-├── sql/
-│   ├── 01_load_to_db.py      # Script memuat CSV ke SQLite
-│   ├── 02_analysis_queries.sql # Kumpulan query analisis bisnis
-│   └── 03_run_queries.py     # Script eksekusi query & simpan hasil ke CSV
-├── dashboard/
-│   └── app.py                # Kode aplikasi Streamlit UI/UX
-├── reports/
-│   ├── figures/              # Output visualisasi gambar
-│   └── tables/               # Output hasil query SQL (CSV)
-└── requirements.txt
-```
+- Mengevaluasi performa pengiriman berdasarkan ketepatan waktu.
+- Mengidentifikasi pola keterlambatan pengiriman berdasarkan bulan.
+- Membandingkan tingkat keterlambatan berdasarkan wilayah pelanggan.
+- Menyajikan hasil analisis dalam bentuk visualisasi interaktif.
+- Menghasilkan insight sebagai bahan evaluasi performa pengiriman.
+
+## Dataset
+
+- **Source:** [Olist Brazilian E-Commerce Public Dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)
+- **Domain:** E-commerce and Delivery Performance
+- **Data Used:** Informasi pesanan, pelanggan, dan tanggal pengiriman yang relevan untuk analisis.
+
+Dataset Olist terdiri atas beberapa tabel yang saling berhubungan. Data yang relevan digunakan untuk menganalisis waktu pengiriman aktual dan estimasi waktu pengiriman.
+
+## Tools & Technologies
+
+| Tools | Purpose |
+|---|---|
+| Python | Pengolahan dan analisis data |
+| Pandas | Manipulasi dan pembersihan data |
+| SQLite | Pengelolaan dan query data |
+| Plotly | Visualisasi data interaktif |
+| Streamlit | Pengembangan dashboard interaktif |
+
+## Methodology
+
+### 1. Data Preparation
+
+Menyiapkan dan menggabungkan data pesanan, pelanggan, serta informasi tanggal pengiriman yang dibutuhkan untuk analisis.
+
+### 2. Data Cleaning
+
+Memeriksa kelengkapan data tanggal dan menyiapkan data untuk perhitungan waktu pengiriman serta identifikasi keterlambatan.
+
+### 3. Delivery Performance Analysis
+
+Membandingkan tanggal pengiriman aktual dengan estimasi tanggal pengiriman untuk mengidentifikasi pesanan yang terlambat.
+
+### 4. Exploratory Data Analysis
+
+Menganalisis performa pengiriman berdasarkan periode waktu dan wilayah pelanggan untuk mengidentifikasi pola keterlambatan.
+
+### 5. Dashboard Development
+
+Mengembangkan dashboard interaktif menggunakan Streamlit dan Plotly. Dashboard menyediakan filter tanggal dan wilayah untuk membantu pengguna mengeksplorasi hasil analisis.
+
+## Key Insights
+
+Berdasarkan hasil analisis yang tercatat pada dashboard proyek:
+
+| Metric | Result |
+|---|---:|
+| Pesanan terkirim yang dianalisis | 96.476 |
+| Pesanan terlambat | 7.827 |
+| Pengiriman tepat waktu | 91,89% |
+| Pengiriman terlambat | 8,11% |
+| Rata-rata waktu pengiriman | 12,6 hari |
+
+### Additional Findings
+
+- **Periode dengan tingkat keterlambatan tertinggi:** Maret 2018, sebesar 21,36% dari 7.003 pesanan.
+- **Wilayah dengan tingkat keterlambatan tertinggi:** Alagoas (AL), sebesar 23,93% dari 397 pesanan.
+
+Hasil analisis dapat berubah sesuai dengan filter tanggal, wilayah, dan cakupan data yang digunakan.
+
+## Recommendations
+
+Berdasarkan pola yang ditemukan, beberapa hal yang dapat menjadi bahan evaluasi adalah:
+
+1. **Evaluasi berdasarkan periode:** meninjau performa pengiriman pada periode dengan tingkat keterlambatan tinggi.
+2. **Evaluasi berdasarkan wilayah:** memeriksa kondisi pengiriman di wilayah dengan persentase keterlambatan tinggi.
+3. **Pemantauan performa:** menggunakan indikator ketepatan waktu dan keterlambatan untuk memantau perubahan performa pengiriman.
+4. **Analisis lanjutan:** mengevaluasi faktor lain yang mungkin berkaitan dengan keterlambatan menggunakan data tambahan yang relevan.
+
+Rekomendasi ini merupakan usulan evaluasi berdasarkan pola analisis dan tidak menyatakan penyebab keterlambatan secara pasti.
+
+## Dashboard
+
+Dashboard interaktif memungkinkan pengguna mengeksplorasi performa pengiriman berdasarkan filter tanggal dan wilayah.
+
+**[Open Live Dashboard](https://delivery-performance-analytics-chahyo.streamlit.app/)**
