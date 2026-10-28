@@ -9,8 +9,6 @@ Analisis performa pengiriman e-commerce menggunakan dataset publik Olist dari Br
 
 **Dashboard Interaktif:** [Lihat Dashboard](https://cahyokml-delivery-analytics.streamlit.app/)
 
-**Repositori GitHub:** [Delivery Performance Analytics](https://github.com/cahyokml/Delivery-Performance-Analytics)
-
 ---
 
 ## Project Overview
